@@ -2,6 +2,7 @@ import * as React from 'react';
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 import { SegmentedButtons } from 'react-native-paper';
 import DoarScreen from './DoarScreen';
+import AddItemForm from './AddItemForm';
 
 const FooterComponent = () => (
   <View style={styles.footer}>
@@ -11,18 +12,32 @@ const FooterComponent = () => (
 
 const DoarComponent = () => (
   <View style={styles.content}>
-    <DoarScreen/>
+    <DoarScreen />
   </View>
 );
 
-const PedirComponent = () => (
-  <View style={styles.content}>
-    <Text>Conteúdo para Pedir</Text>
-  </View>
-);
+// Interface para os itens
+interface Item {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  price: string;
+}
 
 const MyComponent = () => {
-  const [value, setValue] = React.useState('Doar'); // Inicializa com 'Doar'
+  const [value, setValue] = React.useState('Doar');
+  const [items, setItems] = React.useState<Item[]>([]); // Armazena os itens
+
+  const handleAddItem = (newItem: Item) => {
+    setItems(currentItems => [...currentItems, newItem]);
+  };
+
+  const PedirComponent = () => (
+    <View style={styles.content}>
+      <AddItemForm onAddItem={handleAddItem} />
+    </View>
+  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -42,7 +57,7 @@ const MyComponent = () => {
       />
       {value === 'Doar' && <DoarComponent />}
       {value === 'Pedir' && <PedirComponent />}
-      <FooterComponent />
+      {/* <FooterComponent /> */}
     </SafeAreaView>
   );
 };

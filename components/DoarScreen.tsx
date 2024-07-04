@@ -1,94 +1,95 @@
 import React from 'react';
-import { View, Text, Image, Dimensions, StyleSheet, FlatList } from 'react-native';
+import { View, Text, Image, StyleSheet, FlatList } from 'react-native';
 
-const { width: viewportWidth } = Dimensions.get('window');
-
-interface CarouselItem {
-  image: string;
-  name: string;
+interface Item {
+  id: string;
+  title: string;
   description: string;
+  imageUrl: string;
   price: string;
 }
 
-const data: CarouselItem[] = [
+const items: Item[] = [
   {
-    image: './assets/cachorro1.jpg',
-    name: 'Brunito Cabeção',
-    description: 'Doações para financiar um ',
-    price: 'Falta $100',
+    id: '1',
+    title: 'Neiton Douradinha',
+    description: 'Tá precisando de uma casa nova, mas é um cachorro muito bonito e saudável.',
+    imageUrl: './assets/cachorro1.jpg',
+    price: 'R$100,00'
   },
   {
-    image: './assets/cachorro2.jpg',
-    name: 'Brunito Cabeção',
-    description: 'Doações para financiar um cone decente para o brunito',
-    price: '$100',
+    id: '2',
+    title: 'Bruninho Cabeção',
+    description: 'Está precisando de um cone novo, esse dele já tá nas ultimas',
+    imageUrl: './assets/cachorro2.jpg',
+    price: 'R$200,00'
   },
   {
-    image: './assets/cachorro3.jpg',
-    name: 'Jorginho do pão',
-    description: 'Pão ta acabando e esse cachorro só come pão',
-    price: '$50',
+    id: '3',
+    title: 'Jorginho Mocapão',
+    description: 'Descrição do Produto 2',
+    imageUrl: './assets/cachorro3.jpg',
+    price: 'R$200,00'
   },
+  // Adicione mais produtos conforme necessário
 ];
 
-const renderItem = ({ item }: { item: CarouselItem }) => (
-  <View style={styles.card}>
-    <Image source={{ uri: item.image }} style={styles.image} />
-    <Text style={styles.name}>{item.name}</Text>
+
+
+
+const renderItem = ({ item }: { item: Item }) => (
+  <View style={styles.itemContainer}>
+    <Image source={{ uri: item.imageUrl }} style={styles.image} />
+    <Text style={styles.title}>{item.title}</Text>
     <Text style={styles.description}>{item.description}</Text>
     <Text style={styles.price}>{item.price}</Text>
   </View>
 );
 
-const CarouselComponent: React.FC = () => {
-  return (
-    <View style={styles.container}>
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.name}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-      />
-    </View>
-  );
-};
+const MyList: React.FC = () => (
+  <FlatList
+    data={items}
+    renderItem={renderItem}
+    keyExtractor={item => item.id}
+  />
+);
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  card: {
-    backgroundColor: 'white',
-    borderRadius: 8,
-    height: viewportWidth * 1.2,
-    padding: 20,
-    marginLeft: 25,
-    marginRight: 25,
-    width: viewportWidth * 0.8,
+  itemContainer: {
+    padding: 10,
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
+    marginVertical: 10,
+    marginHorizontal: 20,
   },
   image: {
     width: '100%',
-    height: viewportWidth * 0.6,
-    borderRadius: 8,
+    height: 200,
+    borderRadius: 5,
   },
-  name: {
-    fontSize: 24,
+  title: {
     fontWeight: 'bold',
-    marginTop: 10,
+    fontSize: 18,
+    textAlign: 'center',
+    marginTop: 5,
   },
   description: {
     fontSize: 16,
-    marginTop: 10,
+    color: '#666',
+    marginVertical: 10,
   },
   price: {
-    fontSize: 20,
+    fontSize: 18,
+    color: '#333',
     fontWeight: 'bold',
-    marginTop: 10,
+    textAlign: 'center',
+    marginVertical: 5,
   },
 });
 
-export default CarouselComponent;
+export default MyList;
