@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 import { SegmentedButtons } from 'react-native-paper';
+import DoarScreen from './DoarScreen';
 
 const FooterComponent = () => (
   <View style={styles.footer}>
@@ -10,7 +11,7 @@ const FooterComponent = () => (
 
 const DoarComponent = () => (
   <View style={styles.content}>
-    <Text>Conteúdo para Doar</Text>
+    <DoarScreen/>
   </View>
 );
 
