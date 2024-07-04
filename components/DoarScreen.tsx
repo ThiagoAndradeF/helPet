@@ -14,21 +14,21 @@ const items: Item[] = [
     id: '1',
     title: 'Neiton Douradinha',
     description: 'Tá precisando de uma casa nova, mas é um cachorro muito bonito e saudável.',
-    imageUrl: './assets/cachorro1.jpg',
+    imageUrl: './assets/cao-1.jpg',
     price: 'R$100,00'
   },
   {
     id: '2',
     title: 'Bruninho Cabeção',
     description: 'Está precisando de um cone novo, esse dele já tá nas ultimas',
-    imageUrl: './assets/cachorro2.jpg',
+    imageUrl: './assets/cachorrosujo1.jpg',
     price: 'R$200,00'
   },
   {
     id: '3',
     title: 'Jorginho Mocapão',
-    description: 'Descrição do Produto 2',
-    imageUrl: './assets/cachorro3.jpg',
+    description: 'Cachorro tá maluco, precisa de tratamento',
+    imageUrl: './assets/cao-1.jpg',
     price: 'R$200,00'
   },
   // Adicione mais produtos conforme necessário

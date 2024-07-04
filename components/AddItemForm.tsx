@@ -47,28 +47,28 @@ const AddItemForm: React.FC<AddItemFormProps> = ({ onAddItem }) => {
         style={styles.input}
         value={title}
         onChangeText={setTitle}
-        placeholder="Title"
+        placeholder="Nome do pet"
       />
       <TextInput
         style={styles.input}
         value={description}
         onChangeText={setDescription}
-        placeholder="Description"
+        placeholder="Descrição da campanha"
       />
       <TextInput
         style={styles.input}
         value={imageUrl}
         onChangeText={setImageUrl}
-        placeholder="Image URL"
+        placeholder="URL da imagem"
       />
       <TextInput
         style={styles.input}
         value={price}
         onChangeText={setPrice}
-        placeholder="Price"
+        placeholder="Valor "
         keyboardType="numeric"
       />
-      <Button title="Add Item" onPress={handleSubmit} />
+      <Button title="Adicionar Campanha" onPress={handleSubmit} />
     </View>
   );
 };
@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#fff',
     borderRadius: 5,
+    width: '90%',
   },
   input: {
     height: 40,
